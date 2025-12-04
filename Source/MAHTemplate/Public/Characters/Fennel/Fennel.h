@@ -3,10 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "NativeGameplayTags.h"
 #include "GameFramework/Character.h"
 #include "Fennel.generated.h"
 
+class UMHHitboxComponent;
 class UInputMappingContext;
 struct FInputActionInstance;
 class UInputAction;
@@ -14,7 +16,7 @@ class USpringArmComponent;
 class UCameraComponent;
 
 UCLASS()
-class MAHTEMPLATE_API AFennel : public ACharacter
+class MAHTEMPLATE_API AFennel : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -29,7 +31,13 @@ class MAHTEMPLATE_API AFennel : public ACharacter
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = true))
 	TObjectPtr<UInputAction> LookAction;
+	
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = Abilities, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UMHHitboxComponent> HitboxComponent;
 
+public:
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	
 private:
 	AFennel(const FObjectInitializer& ObjectInitializer);
 
