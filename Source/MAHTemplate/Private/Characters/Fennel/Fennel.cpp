@@ -8,6 +8,7 @@
 #include "Characters/Fennel/FennelPlayerState.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Hitboxes/MHHitboxComponent.h"
+#include "Hitboxes/MHHitboxPriorityComponent.h"
 
 UAbilitySystemComponent* AFennel::GetAbilitySystemComponent() const
 {
@@ -31,7 +32,7 @@ AFennel::AFennel(const FObjectInitializer&)
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 	
-	HitboxComponent = CreateDefaultSubobject<UMHHitboxComponent>(TEXT("HitboxComponent"));
+	HitboxComponent = CreateDefaultSubobject<UMHHitboxPriorityComponent>(TEXT("HitboxComponent"));
 }
 
 void AFennel::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
