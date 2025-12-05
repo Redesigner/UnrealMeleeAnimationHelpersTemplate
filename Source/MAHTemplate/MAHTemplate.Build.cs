@@ -16,6 +16,8 @@ public class MAHTemplate : ModuleRules
 			"InputCore",
 			"EnhancedInput",
 			"GameplayAbilities",
+			"GameplayTasks",
+			"GameplayTags",
 			"MeleeAnimationHelpers"
 		});
 

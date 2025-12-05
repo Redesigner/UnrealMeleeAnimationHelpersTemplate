@@ -7,6 +7,8 @@
 #include "GameFramework/PlayerState.h"
 #include "FennelPlayerState.generated.h"
 
+class UAbilitySet;
+class UBaseAttributeSet;
 /**
  * 
  */
@@ -18,6 +20,17 @@ class MAHTEMPLATE_API AFennelPlayerState : public APlayerState, public IAbilityS
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = Abilities, meta = (AllowPrivateAccess = true))
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;	
 	
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = Abilities, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UBaseAttributeSet> AttributeSet;
+	
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = Abilities, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UAbilitySet> AbilitySet;
+	
 public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	
+private:
+	AFennelPlayerState(const FObjectInitializer& ObjectInitializer);
+	
+	void BeginPlay() override;
 };
