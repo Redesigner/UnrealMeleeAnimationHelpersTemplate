@@ -8,12 +8,12 @@
 #include "GameFramework/Character.h"
 #include "Fennel.generated.h"
 
-class UMHHitboxComponent;
-class UInputMappingContext;
 struct FInputActionInstance;
-class UInputAction;
-class USpringArmComponent;
 class UCameraComponent;
+class UInputAction;
+class UInputMappingContext;
+class UMHHitboxComponent;
+class USpringArmComponent;
 
 UCLASS()
 class MAHTEMPLATE_API AFennel : public ACharacter, public IAbilitySystemInterface
@@ -42,7 +42,9 @@ private:
 	AFennel(const FObjectInitializer& ObjectInitializer);
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	
+	virtual void PossessedBy(AController* NewController) override;
 	
 	void BindActions(UInputComponent* PlayerInputComponent);
 	

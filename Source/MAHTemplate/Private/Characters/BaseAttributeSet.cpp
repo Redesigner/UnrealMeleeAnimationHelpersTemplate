@@ -4,6 +4,7 @@
 #include "Characters/BaseAttributeSet.h"
 
 #include "GameplayEffectExtension.h"
+#include "Logging/StructuredLog.h"
 
 void UBaseAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
@@ -44,8 +45,9 @@ void UBaseAttributeSet::ApplyDamage(const FGameplayEffectModCallbackData& Data)
 		return;
 	}
 	
-	SetHealth(FMath::Clamp(GetHealth() - GetDamage(), 0.0f, GetMaxHealth()));
+	SetHealth(FMath::Clamp(GetHealth() - Damage.GetCurrentValue(), 0.0f, GetMaxHealth()));
 	SetDamage(0.0f);
+	UE_LOGFMT(LogTemp, Log, "Took {0} damage. Health is now {1}", Data.EvaluatedData.Magnitude, GetHealth());
 }
 
 void UBaseAttributeSet::ApplyHealing(const FGameplayEffectModCallbackData& Data)

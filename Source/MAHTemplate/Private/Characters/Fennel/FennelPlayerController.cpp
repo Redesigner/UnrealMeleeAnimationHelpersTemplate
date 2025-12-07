@@ -21,3 +21,10 @@ void AFennelPlayerController::BeginPlay()
 		}
 	}
 }
+
+void AFennelPlayerController::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+	
+	
+}

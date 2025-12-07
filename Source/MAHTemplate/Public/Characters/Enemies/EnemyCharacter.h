@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
+#include "GameplayCueInterface.h"
 #include "GameFramework/Character.h"
 #include "EnemyCharacter.generated.h"
 
@@ -17,7 +18,7 @@ class UAbilitySystemComponent;
  * PlayerState to store these components in.
  */
 UCLASS()
-class MAHTEMPLATE_API AEnemyCharacter : public ACharacter, public IAbilitySystemInterface
+class MAHTEMPLATE_API AEnemyCharacter : public ACharacter, public IAbilitySystemInterface, public IGameplayCueInterface
 {
 	GENERATED_BODY()
 	

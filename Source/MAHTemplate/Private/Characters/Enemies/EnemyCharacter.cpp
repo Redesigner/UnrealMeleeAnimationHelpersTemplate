@@ -22,6 +22,8 @@ void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	AbilitySystemComponent->SetAvatarActor(this);
+	
 	if (AbilitySet)
 	{
 		AbilitySet->GiveToAbilitySystem(AbilitySystemComponent);

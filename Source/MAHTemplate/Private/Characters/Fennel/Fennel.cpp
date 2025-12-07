@@ -3,6 +3,7 @@
 
 #include "Characters/Fennel/Fennel.h"
 
+#include "AbilitySystemComponent.h"
 #include "EnhancedInputComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Characters/Fennel/FennelPlayerState.h"
@@ -40,6 +41,17 @@ void AFennel::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	BindActions(PlayerInputComponent);
+}
+
+void AFennel::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	// Need to bind the avatar actor, because abilities like MeleeAbility depend on it
+	if (const AFennelPlayerState* FennelPlayerState = NewController->GetPlayerState<AFennelPlayerState>())
+	{
+		FennelPlayerState->GetAbilitySystemComponent()->SetAvatarActor(this);
+	}
 }
 
 void AFennel::BindActions(UInputComponent* PlayerInputComponent)

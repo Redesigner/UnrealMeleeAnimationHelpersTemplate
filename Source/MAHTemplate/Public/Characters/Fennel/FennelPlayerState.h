@@ -32,5 +32,5 @@ public:
 private:
 	AFennelPlayerState(const FObjectInitializer& ObjectInitializer);
 	
-	void BeginPlay() override;
+	virtual void BeginPlay() override;
 };

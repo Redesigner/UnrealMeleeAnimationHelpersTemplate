@@ -19,4 +19,6 @@ class MAHTEMPLATE_API AFennelPlayerController : public APlayerController
 	TSoftObjectPtr<UInputMappingContext> InputMappingContext;
 
 	virtual void BeginPlay() override;
+	
+	virtual void OnPossess(APawn* InPawn) override;
 };
