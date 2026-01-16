@@ -37,7 +37,7 @@ class MAHTEMPLATE_API AFennel : public ACharacter, public IAbilitySystemInterfac
 
 public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	
+
 private:
 	AFennel(const FObjectInitializer& ObjectInitializer);
 
